@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
+import Signup from "./screens/Signup";
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -12,9 +13,10 @@ export default function App() {
       <NavigationContainer>
         <MainNavigator.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="Login"
+          initialRouteName="Signup"
         >
           <MainNavigator.Screen name="Login" component={Login} />
+          <MainNavigator.Screen name="Signup" component={Signup} />
         </MainNavigator.Navigator>
       </NavigationContainer>
     </View>
