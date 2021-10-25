@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "./screens/Login";
+import Signin from "./screens/Signin";
 import Signup from "./screens/Signup";
 
 export default function App() {
@@ -13,9 +13,9 @@ export default function App() {
       <NavigationContainer>
         <MainNavigator.Navigator
           screenOptions={{ headerShown: false }}
-          initialRouteName="Signup"
+          initialRouteName="Signin"
         >
-          <MainNavigator.Screen name="Login" component={Login} />
+          <MainNavigator.Screen name="Signin" component={Signin} />
           <MainNavigator.Screen name="Signup" component={Signup} />
         </MainNavigator.Navigator>
       </NavigationContainer>

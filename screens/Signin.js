@@ -10,7 +10,7 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
 
-export default function Signup() {
+export default function Signin() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ paddingTop: 40 }}>
