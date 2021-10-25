@@ -26,7 +26,10 @@ export default function Signin({ navigation }) {
       </View>
       <View style={styles.buttoncon}>
         <Text style={styles.signtext}>Sign In</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Home")}
+        >
           <Entypo name="chevron-right" size={35} color="white" />
         </TouchableOpacity>
       </View>
