@@ -46,6 +46,17 @@ export default function Signin() {
           </Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          paddingTop: 20,
+        }}
+      >
+        <Text style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}>
+          Forgot Password ?
+        </Text>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -63,6 +74,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingVertical: 30,
     fontWeight: "bold",
+    marginTop: 20,
   },
   inputcon: {
     margin: 10,
