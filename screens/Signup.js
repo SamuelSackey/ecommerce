@@ -10,7 +10,7 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
 
-export default function Signup() {
+export default function Signup({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ paddingTop: 40 }}>
@@ -43,7 +43,7 @@ export default function Signup() {
         <Text style={{ color: "lightgray", fontSize: 16 }}>
           Already have an account ?{" "}
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
           <Text style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}>
             Sign in
           </Text>
