@@ -14,6 +14,9 @@ export default function Home() {
           <FontAwesome name="opencart" size={24} color="black" />
         </TouchableOpacity>
       </View>
+      <View>
+        <Text style={styles.bigtext}>Discover our exclusive products</Text>
+      </View>
     </SafeAreaView>
   );
 }
@@ -28,5 +31,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginVertical: 10,
+  },
+  bigtext: {
+    fontSize: 30,
   },
 });
