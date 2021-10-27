@@ -1,17 +1,21 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-export default function ProductBox() {
+export default function ProductBox({ product }) {
+  const name = product.title;
+  const price = product.price;
+  const image = product.image;
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.img}
         source={{
-          uri: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          uri: image,
         }}
       />
-      <Text style={styles.prodname}>Bag</Text>
-      <Text style={styles.price}>$199</Text>
+      <Text style={styles.prodname}>{name}</Text>
+      <Text style={styles.price}>{`$${price}`} </Text>
     </View>
   );
 }
@@ -35,7 +39,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   prodname: {
-    fontSize: 18,
+    fontSize: 12,
+    padding: 2,
+    textAlign: "center",
   },
   price: {
     fontSize: 19,
