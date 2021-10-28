@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   View,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
@@ -13,42 +14,46 @@ import { Entypo } from "@expo/vector-icons";
 export default function Signup({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{ paddingTop: 40 }}>
-        <Text style={styles.textbig}>Sign up and start shopping</Text>
-      </View>
-      <View style={{ paddingTop: 40 }}>
-        <View style={styles.inputcon}>
-          <TextInput style={styles.input} placeholder="Name" />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ paddingTop: 40 }}>
+          <Text style={styles.textbig}>Sign up and start shopping</Text>
         </View>
-        <View style={styles.inputcon}>
-          <TextInput style={styles.input} placeholder="Email address" />
+        <View style={{ paddingTop: 40 }}>
+          <View style={styles.inputcon}>
+            <TextInput style={styles.input} placeholder="Name" />
+          </View>
+          <View style={styles.inputcon}>
+            <TextInput style={styles.input} placeholder="Email address" />
+          </View>
+          <View style={styles.inputcon}>
+            <TextInput style={styles.input} placeholder="Password" />
+          </View>
         </View>
-        <View style={styles.inputcon}>
-          <TextInput style={styles.input} placeholder="Password" />
+        <View style={styles.buttoncon}>
+          <Text style={styles.signtext}>Sign Up</Text>
+          <TouchableOpacity style={styles.button}>
+            <Entypo name="chevron-right" size={35} color="white" />
+          </TouchableOpacity>
         </View>
-      </View>
-      <View style={styles.buttoncon}>
-        <Text style={styles.signtext}>Sign Up</Text>
-        <TouchableOpacity style={styles.button}>
-          <Entypo name="chevron-right" size={35} color="white" />
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <Text style={{ color: "lightgray", fontSize: 16 }}>
-          Already have an account ?{" "}
-        </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
-          <Text style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}>
-            Sign in
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <Text style={{ color: "lightgray", fontSize: 16 }}>
+            Already have an account ?{" "}
           </Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
+            <Text
+              style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}
+            >
+              Sign in
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -60,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fcfcfc",
     paddingHorizontal: 10,
     alignContent: "center",
+    paddingBottom: 20,
   },
   textbig: {
     fontSize: 45,
