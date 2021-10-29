@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Products from "../assets/data/Products";
-import { FontAwesome } from "@expo/vector-icons";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/core";
 
 export default function Description() {
@@ -24,7 +24,15 @@ export default function Description() {
 
   return (
     <SafeAreaView style={styles.page}>
-      <View style={{ paddingHorizontal: 50, flex: 2 }}>
+      <View style={styles.topbar}>
+        <TouchableOpacity>
+          <Feather name="menu" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome name="opencart" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.imgbox}>
         <Image
           source={{ uri: image }}
           style={styles.img}
@@ -56,6 +64,18 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
     backgroundColor: "#fcfcfc",
+  },
+  topbar: {
+    paddingTop: 40,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  imgbox: {
+    paddingHorizontal: 50,
+    flex: 2,
+    paddingVertical: 10,
   },
   img: {
     width: "100%",
