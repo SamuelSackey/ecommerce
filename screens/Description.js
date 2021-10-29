@@ -10,9 +10,17 @@ import {
 } from "react-native";
 import Products from "../assets/data/Products";
 import { FontAwesome } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/core";
 
 export default function Description() {
-  const { image, title, description, price } = Products[0];
+  const route = useRoute();
+
+  //Get route of id of selected product box
+  const routeID = route.params?.id;
+
+  const { image, title, description, price } = Products.find(
+    (x) => x.id === routeID
+  );
 
   return (
     <SafeAreaView style={styles.page}>
