@@ -1,22 +1,27 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/core";
 
 export default function ProductBox({ product }) {
-  const name = product.title;
-  const price = product.price;
-  const image = product.image;
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("Description", { id: product.id });
+  };
+
+  const { title, price, image } = product;
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <Image
         style={styles.img}
         source={{
           uri: image,
         }}
       />
-      <Text style={styles.prodname}>{name}</Text>
+      <Text style={styles.prodname}>{title}</Text>
       <Text style={styles.price}>{`$${price}`} </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 
