@@ -6,6 +6,7 @@ import ProductBox from "../components/ProductBox";
 import Categories from "../assets/data/Categories";
 import Category from "../assets/data/Category";
 import Products from "../assets/data/Products";
+import CategoriesBar from "../components/CategoriesBar";
 
 export default function Home() {
   return (
@@ -21,14 +22,29 @@ export default function Home() {
       <View>
         <Text style={styles.bigtext}>Discover our exclusive products</Text>
       </View>
+      <View style={{ paddingBottom: 10 }}>
+        <FlatList
+          data={Categories}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <CategoriesBar categories={item} />}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            alignItems: "center",
+            marginVertical: 5,
+          }}
+        />
+      </View>
 
-      <FlatList
-        data={Products}
-        renderItem={({ item }) => <ProductBox product={item} />}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ alignItems: "center" }}
-      />
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={Products}
+          renderItem={({ item }) => <ProductBox product={item} />}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ alignItems: "center" }}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -48,6 +64,6 @@ const styles = StyleSheet.create({
   },
   bigtext: {
     fontSize: 30,
-    paddingBottom: 20,
+    marginBottom: 20,
   },
 });
