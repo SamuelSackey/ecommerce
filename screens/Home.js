@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -9,6 +9,17 @@ import Products from "../assets/data/Products";
 import CategoriesBar from "../components/CategoriesBar";
 
 export default function Home() {
+  const [loadedCat, setLoadedCat] = useState("All");
+  const [retrievedCat, setRetrievedCat] = useState();
+
+  useEffect(() => {
+    if (loadedCat === "All") {
+      setRetrievedCat(Products);
+    } else {
+      setRetrievedCat(Category[loadedCat]);
+    }
+  }, [loadedCat]);
+
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.topbar}>
@@ -22,11 +33,16 @@ export default function Home() {
       <View>
         <Text style={styles.bigtext}>Discover our exclusive products</Text>
       </View>
+
       <View style={{ paddingBottom: 10 }}>
         <FlatList
           data={Categories}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <CategoriesBar categories={item} />}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => setLoadedCat(item.category)}>
+              <CategoriesBar categories={item} />
+            </TouchableOpacity>
+          )}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{
@@ -38,7 +54,7 @@ export default function Home() {
 
       <View style={{ flex: 1 }}>
         <FlatList
-          data={Products}
+          data={retrievedCat}
           renderItem={({ item }) => <ProductBox product={item} />}
           numColumns={2}
           showsVerticalScrollIndicator={false}

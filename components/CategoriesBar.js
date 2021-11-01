@@ -1,20 +1,14 @@
 import React from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const CategoriesBar = ({ categories }) => {
   const { category } = categories;
   return (
-    <TouchableOpacity style={styles.container}>
+    <View style={styles.container}>
       <Text style={{ color: "white", fontSize: 16, textAlign: "center" }}>
         {category}
       </Text>
-    </TouchableOpacity>
+    </View>
   );
 };
 
