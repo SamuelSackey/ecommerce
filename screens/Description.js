@@ -11,6 +11,7 @@ import {
 import Products from "../assets/data/Products";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/core";
+import TopBar from "../components/TopBar";
 
 export default function Description() {
   const route = useRoute();
@@ -24,14 +25,7 @@ export default function Description() {
 
   return (
     <SafeAreaView style={styles.page}>
-      <View style={styles.topbar}>
-        <TouchableOpacity>
-          <Feather name="menu" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesome name="opencart" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
+      <TopBar />
       <View style={styles.imgbox}>
         <Image
           source={{ uri: image }}
@@ -91,6 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 2,
     paddingVertical: 10,
+    marginBottom: 10,
     color: "grey",
     textAlign: "center",
   },
