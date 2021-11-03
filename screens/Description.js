@@ -12,9 +12,16 @@ import Products from "../assets/data/Products";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/core";
 import TopBar from "../components/TopBar";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../redux";
 
 export default function Description() {
   const route = useRoute();
+
+  const dispatch = useDispatch();
+
+  const { addItemToCart } = bindActionCreators(actionCreators, dispatch);
 
   //Get route of id of selected product box
   const routeID = route.params?.id;
@@ -41,7 +48,7 @@ export default function Description() {
         <Text style={styles.proddescr}>{description}</Text>
       </ScrollView>
       <View style={styles.buttoncon}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => addItemToCart()}>
           <FontAwesome name="opencart" size={24} color="white" />
           <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
             {"$"}

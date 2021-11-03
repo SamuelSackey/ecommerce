@@ -2,9 +2,12 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
+import { useSelector } from "react-redux";
 
 export default function TopBar() {
   const navigation = useNavigation();
+
+  const cart = useSelector((state) => state.cart.numberOfProducts);
 
   return (
     <View style={styles.topbar}>
@@ -16,9 +19,11 @@ export default function TopBar() {
         style={{ flexDirection: "row" }}
       >
         <FontAwesome name="opencart" size={24} color="black" />
-        <View style={styles.badgeContainer}>
-          <Text style={styles.badgeText}>3</Text>
-        </View>
+        {cart ? (
+          <View style={styles.badgeContainer}>
+            <Text style={styles.badgeText}>{cart}</Text>
+          </View>
+        ) : null}
       </TouchableOpacity>
     </View>
   );
