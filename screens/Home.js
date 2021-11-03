@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
-import { Feather, FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ProductBox from "../components/ProductBox";
 import Categories from "../assets/data/Categories";
 import Category from "../assets/data/Category";
 import Products from "../assets/data/Products";
 import CategoriesBar from "../components/CategoriesBar";
+import TopBar from "../components/TopBar";
 
 export default function Home() {
   const [loadedCat, setLoadedCat] = useState("All");
@@ -22,14 +22,7 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.page}>
-      <View style={styles.topbar}>
-        <TouchableOpacity>
-          <Feather name="menu" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesome name="opencart" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
+      <TopBar />
       <View>
         <Text style={styles.bigtext}>Discover our exclusive products</Text>
       </View>
@@ -71,13 +64,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "#fcfcfc",
   },
-  topbar: {
-    paddingTop: 40,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 10,
-  },
+
   bigtext: {
     fontSize: 30,
     marginBottom: 20,
