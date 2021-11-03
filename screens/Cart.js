@@ -6,7 +6,8 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import CartItem from "../components/CartItem";
 
 export default function Cart({ navigation }) {
   return (
@@ -17,8 +18,11 @@ export default function Cart({ navigation }) {
         </TouchableOpacity>
         <Text style={styles.bartext}>Cart</Text>
         <TouchableOpacity>
-          <AntDesign name="delete" size={24} color="black" />
+          <MaterialIcons name="clear-all" size={26} color="black" />
         </TouchableOpacity>
+      </View>
+      <View>
+        <CartItem />
       </View>
     </SafeAreaView>
   );
