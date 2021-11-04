@@ -12,13 +12,14 @@ import Products from "../assets/data/Products";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/core";
 import TopBar from "../components/TopBar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../redux";
 
 export default function Description() {
   const route = useRoute();
 
+  const listOfProducts = useSelector((state) => state.cart.listOfProducts);
   const dispatch = useDispatch();
 
   const { addItemToCart } = bindActionCreators(actionCreators, dispatch);
@@ -47,16 +48,24 @@ export default function Description() {
         <Text style={styles.proddescr}>{description}</Text>
       </ScrollView>
       <View style={styles.buttoncon}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => addItemToCart([product])}
-        >
-          <FontAwesome name="opencart" size={24} color="white" />
-          <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
-            {"$"}
-            {price}
-          </Text>
-        </TouchableOpacity>
+        {listOfProducts.includes(product) ? (
+          <View style={styles.buttoninactive}>
+            <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
+              Added to Cart
+            </Text>
+          </View>
+        ) : (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => addItemToCart([product])}
+          >
+            <FontAwesome name="opencart" size={24} color="white" />
+            <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
+              {"$"}
+              {price}
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -106,6 +115,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#8c736d",
+    borderRadius: 50,
+    padding: 15,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  buttoninactive: {
+    backgroundColor: "grey",
     borderRadius: 50,
     padding: 15,
     flexDirection: "row",
