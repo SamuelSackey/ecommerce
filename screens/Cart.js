@@ -40,6 +40,22 @@ export default function Cart({ navigation }) {
           showsVerticalScrollIndicator={false}
         />
       </View>
+
+      <View style={styles.buttoncon}>
+        {listOfProducts.length === 0 ? (
+          <View style={styles.buttoninactive}>
+            <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
+              Nothing to Checkout
+            </Text>
+          </View>
+        ) : (
+          <TouchableOpacity style={styles.button} onPress={() => alert(1)}>
+            <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
+              Proceed to Checkout
+            </Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </SafeAreaView>
   );
 }
@@ -63,5 +79,25 @@ const styles = StyleSheet.create({
     marginRight: 2,
     flex: 1,
     textAlign: "center",
+  },
+  button: {
+    backgroundColor: "#8c736d",
+    borderRadius: 50,
+    padding: 15,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  buttoninactive: {
+    backgroundColor: "grey",
+    borderRadius: 50,
+    padding: 15,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  buttoncon: {
+    paddingVertical: 10,
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingHorizontal: 20,
   },
 });
