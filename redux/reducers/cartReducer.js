@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants";
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from "../constants";
 
 const initialState = {
   numberOfProducts: 0,
@@ -24,6 +24,9 @@ export const cartReducer = (state = initialState, action) => {
           }),
         ],
       };
+
+    case CLEAR_CART:
+      return initialState;
 
     default:
       return state;

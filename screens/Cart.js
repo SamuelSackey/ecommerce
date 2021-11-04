@@ -9,9 +9,15 @@ import {
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import CartItem from "../components/CartItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators } from "../redux";
+import { bindActionCreators } from "redux";
 
 export default function Cart({ navigation }) {
+  const dispatch = useDispatch();
+
+  const { clearItemsFromCart } = bindActionCreators(actionCreators, dispatch);
+
   const listOfProducts = useSelector((state) => state.cart.listOfProducts);
 
   return (
@@ -21,7 +27,7 @@ export default function Cart({ navigation }) {
           <Ionicons name="arrow-back-circle-outline" size={26} color="black" />
         </TouchableOpacity>
         <Text style={styles.bartext}>Cart</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => clearItemsFromCart()}>
           <MaterialIcons name="clear-all" size={26} color="black" />
         </TouchableOpacity>
       </View>
