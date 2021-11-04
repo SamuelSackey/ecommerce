@@ -26,9 +26,8 @@ export default function Description() {
   //Get route of id of selected product box
   const routeID = route.params?.id;
 
-  const { image, title, description, price } = Products.find(
-    (x) => x.id === routeID
-  );
+  const product = Products.find((x) => x.id === routeID);
+  const { image, title, description, price } = product;
 
   return (
     <SafeAreaView style={styles.page}>
@@ -48,7 +47,10 @@ export default function Description() {
         <Text style={styles.proddescr}>{description}</Text>
       </ScrollView>
       <View style={styles.buttoncon}>
-        <TouchableOpacity style={styles.button} onPress={() => addItemToCart()}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => addItemToCart([product])}
+        >
           <FontAwesome name="opencart" size={24} color="white" />
           <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
             {"$"}

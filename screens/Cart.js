@@ -5,11 +5,15 @@ import {
   Text,
   View,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import CartItem from "../components/CartItem";
+import { useSelector } from "react-redux";
 
 export default function Cart({ navigation }) {
+  const listOfProducts = useSelector((state) => state.cart.listOfProducts);
+
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.topbar}>
@@ -21,8 +25,14 @@ export default function Cart({ navigation }) {
           <MaterialIcons name="clear-all" size={26} color="black" />
         </TouchableOpacity>
       </View>
-      <View>
-        <CartItem />
+
+      <View style={{ flex: 1 }}>
+        <FlatList
+          keyExtractor={(item) => item.id.toString()}
+          data={listOfProducts}
+          renderItem={({ item }) => <CartItem product={item} />}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </SafeAreaView>
   );

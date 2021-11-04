@@ -2,6 +2,7 @@ import { ADD_TO_CART } from "../constants";
 
 const initialState = {
   numberOfProducts: 0,
+  listOfProducts: [],
 };
 
 export const cartReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ export const cartReducer = (state = initialState, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        numberOfProducts: state.numberOfProducts + action.payload,
+        numberOfProducts: state.numberOfProducts + 1,
+        listOfProducts: [...state.listOfProducts, ...action.payload],
       };
 
     default:

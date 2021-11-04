@@ -3,12 +3,14 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function CartItem() {
+export default function CartItem({ product }) {
+  const { title, image, price } = product;
+
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          uri: image,
         }}
         style={styles.image}
       />
@@ -17,8 +19,10 @@ export default function CartItem() {
       <View style={styles.rightContainer}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View style={{ flex: 2 }}>
-            <Text style={styles.name}>
-              Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+            <Text style={styles.name}>{title}</Text>
+            <Text style={styles.price}>
+              {"$"}
+              {price}
             </Text>
           </View>
 
@@ -70,6 +74,12 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 14,
     marginBottom: 2,
+  },
+  price: {
+    fontSize: 16,
+    marginVertical: 2,
+    textAlign: "right",
+    color: "#8c736d",
   },
   text: {
     color: "grey",
