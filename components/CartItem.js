@@ -2,9 +2,16 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../redux";
 
 export default function CartItem({ product }) {
   const { title, image, price } = product;
+
+  const dispatch = useDispatch();
+
+  const { removeItemFromCart } = bindActionCreators(actionCreators, dispatch);
 
   return (
     <View style={styles.container}>
@@ -41,7 +48,10 @@ export default function CartItem({ product }) {
                 <Ionicons name="ios-chevron-down" size={24} color="black" />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={{ paddingLeft: 5 }}>
+            <TouchableOpacity
+              style={{ paddingLeft: 5 }}
+              onPress={() => removeItemFromCart(product)}
+            >
               <AntDesign name="delete" size={24} color="black" />
             </TouchableOpacity>
           </View>
