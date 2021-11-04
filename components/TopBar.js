@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 export default function TopBar() {
   const navigation = useNavigation();
 
-  const cart = useSelector((state) => state.cart.numberOfProducts);
+  const numberOfProducts = useSelector((state) => state.cart.numberOfProducts);
 
   return (
     <View style={styles.topbar}>
@@ -19,9 +19,9 @@ export default function TopBar() {
         style={{ flexDirection: "row" }}
       >
         <FontAwesome name="opencart" size={24} color="black" />
-        {cart ? (
+        {numberOfProducts ? (
           <View style={styles.badgeContainer}>
-            <Text style={styles.badgeText}>{cart}</Text>
+            <Text style={styles.badgeText}>{numberOfProducts}</Text>
           </View>
         ) : null}
       </TouchableOpacity>
