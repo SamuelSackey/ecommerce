@@ -9,6 +9,7 @@ import Description from "./screens/Description";
 import Cart from "./screens/Cart";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import Checkout from "./screens/Checkout";
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -26,6 +27,7 @@ export default function App() {
             <MainNavigator.Screen name="Home" component={Home} />
             <MainNavigator.Screen name="Description" component={Description} />
             <MainNavigator.Screen name="Cart" component={Cart} />
+            <MainNavigator.Screen name="Checkout" component={Checkout} />
           </MainNavigator.Navigator>
         </NavigationContainer>
       </Provider>

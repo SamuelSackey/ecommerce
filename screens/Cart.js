@@ -49,7 +49,10 @@ export default function Cart({ navigation }) {
             </Text>
           </View>
         ) : (
-          <TouchableOpacity style={styles.button} onPress={() => alert(1)}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Checkout")}
+          >
             <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
               Proceed to Checkout
             </Text>
@@ -76,9 +79,9 @@ const styles = StyleSheet.create({
   bartext: {
     fontSize: 20,
     fontWeight: "500",
-    marginRight: 2,
+    marginLeft: 10,
     flex: 1,
-    textAlign: "center",
+    textAlign: "left",
   },
   button: {
     backgroundColor: "#8c736d",
