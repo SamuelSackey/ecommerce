@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -12,6 +12,8 @@ export default function CartItem({ product }) {
   const dispatch = useDispatch();
 
   const { removeItemFromCart } = bindActionCreators(actionCreators, dispatch);
+
+  const [counterNumber, setCounterNumber] = useState(1);
 
   return (
     <View style={styles.container}>
@@ -29,7 +31,7 @@ export default function CartItem({ product }) {
             <Text style={styles.name}>{title}</Text>
             <Text style={styles.price}>
               {"$"}
-              {price}
+              {price * counterNumber}
             </Text>
           </View>
 
@@ -40,13 +42,27 @@ export default function CartItem({ product }) {
             }}
           >
             <View style={{ alignItems: "center", paddingHorizontal: 5 }}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setCounterNumber(counterNumber + 1)}
+              >
                 <Ionicons name="ios-chevron-up" size={24} color="black" />
               </TouchableOpacity>
-              <Text>3</Text>
-              <TouchableOpacity>
-                <Ionicons name="ios-chevron-down" size={24} color="black" />
-              </TouchableOpacity>
+              <Text>{counterNumber}</Text>
+              {counterNumber === 1 ? (
+                <View>
+                  <Ionicons
+                    name="ios-chevron-down"
+                    size={24}
+                    color="lightgrey"
+                  />
+                </View>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => setCounterNumber(counterNumber - 1)}
+                >
+                  <Ionicons name="ios-chevron-down" size={24} color="black" />
+                </TouchableOpacity>
+              )}
             </View>
             <TouchableOpacity
               style={{ paddingLeft: 5 }}
