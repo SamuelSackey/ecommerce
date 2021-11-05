@@ -1,19 +1,26 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import { useSelector } from "react-redux";
 
-export default function TopBar() {
+export default function TopBar({ route }) {
   const navigation = useNavigation();
 
   const numberOfProducts = useSelector((state) => state.cart.numberOfProducts);
 
   return (
     <View style={styles.topbar}>
-      <TouchableOpacity>
-        <Feather name="settings" size={25} color="black" />
-      </TouchableOpacity>
+      {route ? (
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back-circle-outline" size={27} color="black" />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity>
+          <Feather name="settings" size={25} color="black" />
+        </TouchableOpacity>
+      )}
+
       <TouchableOpacity
         onPress={() => navigation.navigate("Cart")}
         style={{ flexDirection: "row" }}

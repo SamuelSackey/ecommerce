@@ -32,7 +32,7 @@ export default function Description() {
 
   return (
     <SafeAreaView style={styles.page}>
-      <TopBar />
+      <TopBar route={routeID} />
       <View style={styles.imgbox}>
         <Image
           source={{ uri: image }}
