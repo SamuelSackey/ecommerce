@@ -1,4 +1,9 @@
-import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from "../constants";
+import {
+  ADD_TO_CART,
+  CLEAR_CART,
+  REMOVE_FROM_CART,
+  UPDATE_CART_PRICE,
+} from "../constants";
 
 export const addItemToCart = (product) => {
   return (dispatch) => {
@@ -22,6 +27,15 @@ export const clearItemsFromCart = () => {
   return (dispatch) => {
     dispatch({
       type: CLEAR_CART,
+    });
+  };
+};
+
+export const updateCartPrice = (price) => {
+  return (dispatch) => {
+    dispatch({
+      type: UPDATE_CART_PRICE,
+      payload: price,
     });
   };
 };

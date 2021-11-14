@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -11,7 +11,15 @@ export default function CartItem({ product }) {
 
   const dispatch = useDispatch();
 
-  const { removeItemFromCart } = bindActionCreators(actionCreators, dispatch);
+  const { removeItemFromCart, updateCartPrice } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
+
+  useEffect(() => {
+    const unsubscribe = updateCartPrice(price);
+    return unsubscribe;
+  }, []);
 
   const [counterNumber, setCounterNumber] = useState(1);
 
@@ -43,7 +51,9 @@ export default function CartItem({ product }) {
           >
             <View style={{ alignItems: "center", paddingHorizontal: 5 }}>
               <TouchableOpacity
-                onPress={() => setCounterNumber(counterNumber + 1)}
+                onPress={() => {
+                  setCounterNumber(counterNumber + 1);
+                }}
               >
                 <Ionicons name="ios-chevron-up" size={24} color="black" />
               </TouchableOpacity>

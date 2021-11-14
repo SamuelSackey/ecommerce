@@ -19,6 +19,7 @@ export default function Cart({ navigation }) {
   const { clearItemsFromCart } = bindActionCreators(actionCreators, dispatch);
 
   const listOfProducts = useSelector((state) => state.cart.listOfProducts);
+  const totalPrice = useSelector((state) => state.price.totalPrice);
 
   return (
     <SafeAreaView style={styles.page}>
@@ -39,6 +40,11 @@ export default function Cart({ navigation }) {
           renderItem={({ item }) => <CartItem product={item} />}
           showsVerticalScrollIndicator={false}
         />
+      </View>
+
+      <View>
+        <Text>{listOfProducts.length} Items</Text>
+        <Text>{totalPrice}</Text>
       </View>
 
       <View style={styles.buttoncon}>
