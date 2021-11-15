@@ -12,6 +12,7 @@ import CartItem from "../components/CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators } from "../redux";
 import { bindActionCreators } from "redux";
+import round from "../utilities/round";
 
 export default function Cart({ navigation }) {
   const dispatch = useDispatch();
@@ -79,12 +80,6 @@ export default function Cart({ navigation }) {
         )}
       </View>
     </SafeAreaView>
-  );
-}
-
-function round(value, decimals) {
-  return Number(Math.round(value + "e" + decimals) + "e-" + decimals).toFixed(
-    decimals
   );
 }
 
