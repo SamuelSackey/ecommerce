@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,10 +16,20 @@ import { bindActionCreators } from "redux";
 export default function Cart({ navigation }) {
   const dispatch = useDispatch();
 
-  const { clearItemsFromCart } = bindActionCreators(actionCreators, dispatch);
+  const { clearItemsFromCart, resetCartPrice } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   const listOfProducts = useSelector((state) => state.cart.listOfProducts);
   const totalPrice = useSelector((state) => state.price.totalPrice);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener("beforeRemove", () =>
+      resetCartPrice()
+    );
+    return unsubscribe;
+  }, []);
 
   return (
     <SafeAreaView style={styles.page}>
@@ -42,9 +52,12 @@ export default function Cart({ navigation }) {
         />
       </View>
 
-      <View>
-        <Text>{listOfProducts.length} Items</Text>
-        <Text>{totalPrice}</Text>
+      <View style={styles.pricecon}>
+        <Text style={{ fontSize: 16 }}>Total Price</Text>
+        <Text style={{ fontSize: 18, color: "#8c736d" }}>
+          {"$"}
+          {round(totalPrice, 2)}
+        </Text>
       </View>
 
       <View style={styles.buttoncon}>
@@ -66,6 +79,12 @@ export default function Cart({ navigation }) {
         )}
       </View>
     </SafeAreaView>
+  );
+}
+
+function round(value, decimals) {
+  return Number(Math.round(value + "e" + decimals) + "e-" + decimals).toFixed(
+    decimals
   );
 }
 
@@ -108,5 +127,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     paddingHorizontal: 20,
+  },
+  pricecon: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });

@@ -11,13 +11,11 @@ export default function CartItem({ product }) {
 
   const dispatch = useDispatch();
 
-  const { removeItemFromCart, updateCartPrice } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { removeItemFromCart, increaseCartPrice, decreaseCartPrice } =
+    bindActionCreators(actionCreators, dispatch);
 
   useEffect(() => {
-    const unsubscribe = updateCartPrice(price);
+    const unsubscribe = increaseCartPrice(price);
     return unsubscribe;
   }, []);
 
@@ -53,6 +51,7 @@ export default function CartItem({ product }) {
               <TouchableOpacity
                 onPress={() => {
                   setCounterNumber(counterNumber + 1);
+                  increaseCartPrice(price);
                 }}
               >
                 <Ionicons name="ios-chevron-up" size={24} color="black" />
@@ -68,7 +67,10 @@ export default function CartItem({ product }) {
                 </View>
               ) : (
                 <TouchableOpacity
-                  onPress={() => setCounterNumber(counterNumber - 1)}
+                  onPress={() => {
+                    setCounterNumber(counterNumber - 1);
+                    decreaseCartPrice(price);
+                  }}
                 >
                   <Ionicons name="ios-chevron-down" size={24} color="black" />
                 </TouchableOpacity>
@@ -76,7 +78,10 @@ export default function CartItem({ product }) {
             </View>
             <TouchableOpacity
               style={{ paddingLeft: 5 }}
-              onPress={() => removeItemFromCart(product)}
+              onPress={() => {
+                removeItemFromCart(product);
+                decreaseCartPrice(price * counterNumber);
+              }}
             >
               <AntDesign name="delete" size={24} color="black" />
             </TouchableOpacity>

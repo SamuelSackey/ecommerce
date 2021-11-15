@@ -1,8 +1,10 @@
 import {
   ADD_TO_CART,
   CLEAR_CART,
+  DECREASE_CART_PRICE,
+  INCREASE_CART_PRICE,
   REMOVE_FROM_CART,
-  UPDATE_CART_PRICE,
+  RESET_CART_PRICE,
 } from "../constants";
 
 export const addItemToCart = (product) => {
@@ -31,11 +33,28 @@ export const clearItemsFromCart = () => {
   };
 };
 
-export const updateCartPrice = (price) => {
+export const increaseCartPrice = (price) => {
   return (dispatch) => {
     dispatch({
-      type: UPDATE_CART_PRICE,
+      type: INCREASE_CART_PRICE,
       payload: price,
+    });
+  };
+};
+
+export const decreaseCartPrice = (price) => {
+  return (dispatch) => {
+    dispatch({
+      type: DECREASE_CART_PRICE,
+      payload: price,
+    });
+  };
+};
+
+export const resetCartPrice = () => {
+  return (dispatch) => {
+    dispatch({
+      type: RESET_CART_PRICE,
     });
   };
 };
