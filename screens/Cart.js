@@ -39,7 +39,12 @@ export default function Cart({ navigation }) {
           <Ionicons name="arrow-back-circle-outline" size={26} color="black" />
         </TouchableOpacity>
         <Text style={styles.bartext}>Cart</Text>
-        <TouchableOpacity onPress={() => clearItemsFromCart()}>
+        <TouchableOpacity
+          onPress={() => {
+            clearItemsFromCart();
+            resetCartPrice();
+          }}
+        >
           <MaterialIcons name="clear-all" size={26} color="black" />
         </TouchableOpacity>
       </View>
