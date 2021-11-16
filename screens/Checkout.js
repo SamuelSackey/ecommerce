@@ -29,22 +29,22 @@ export default function Checkout({ navigation }) {
         <Text style={styles.bartext}>Checkout</Text>
       </View>
 
-      <View style={styles.card}>
-        <View style={{ paddingTop: 5 }}>
-          <Text style={styles.textbig}>Information</Text>
-          <View style={styles.inputcon}>
-            <TextInput style={styles.input} placeholder="Name" />
-          </View>
-          <View style={styles.inputcon}>
-            <TextInput style={styles.input} placeholder="Phone Number" />
-          </View>
-          <View style={styles.inputcon}>
-            <TextInput style={styles.input} placeholder="Address" />
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+        <View style={styles.card}>
+          <View style={{ paddingTop: 5 }}>
+            <Text style={styles.textbig}>Information</Text>
+            <View style={styles.inputcon}>
+              <TextInput style={styles.input} placeholder="Name" />
+            </View>
+            <View style={styles.inputcon}>
+              <TextInput style={styles.input} placeholder="Phone Number" />
+            </View>
+            <View style={styles.inputcon}>
+              <TextInput style={styles.input} placeholder="Address" />
+            </View>
           </View>
         </View>
-      </View>
 
-      <ScrollView style={{ flex: 1 }}>
         <View style={styles.card}>
           <View style={{ paddingTop: 5 }}>
             <Text style={styles.textbig}>Payment</Text>
