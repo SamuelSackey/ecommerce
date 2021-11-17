@@ -53,6 +53,7 @@ export default function Home() {
           numColumns={2}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ alignItems: "center" }}
+          columnWrapperStyle={{ justifyContent: "center" }}
         />
       </View>
     </SafeAreaView>
