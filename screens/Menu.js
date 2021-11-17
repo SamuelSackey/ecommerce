@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -23,7 +24,10 @@ export default function Menu({ navigation }) {
         <Text style={styles.bartext}>Menu</Text>
       </View>
 
-      <View style={{ flex: 1 }}></View>
+      <View style={{ flex: 1, alignItems: "center", paddingTop: 10 }}>
+        <Image source={require("../assets/ShopIcon.png")} style={styles.icon} />
+        <Text style={styles.title}>Electro-Shopper</Text>
+      </View>
 
       <View style={styles.buttoncon}>
         <TouchableOpacity
@@ -58,6 +62,17 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "left",
     marginLeft: 10,
+    color: colors.text,
+  },
+  icon: {
+    width: 300,
+    height: 300,
+    paddingVertical: 20,
+    borderRadius: 20,
+  },
+  title: {
+    marginVertical: 20,
+    fontSize: 30,
     color: colors.text,
   },
   button: {
