@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     borderColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    position: "relative",
-    right: 13,
+    position: "absolute",
+    left: 13,
     top: 13,
   },
   badgeText: {
