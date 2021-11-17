@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
+import colors from "../utilities/colors";
 
 export default function Signin({ navigation }) {
   return (
@@ -47,7 +48,11 @@ export default function Signin({ navigation }) {
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
             <Text
-              style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}
+              style={{
+                color: colors.primary,
+                fontSize: 16,
+                fontWeight: "bold",
+              }}
             >
               Sign up
             </Text>
@@ -60,7 +65,9 @@ export default function Signin({ navigation }) {
             paddingTop: 20,
           }}
         >
-          <Text style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}>
+          <Text
+            style={{ color: colors.primary, fontSize: 16, fontWeight: "bold" }}
+          >
             Forgot Password ?
           </Text>
         </TouchableOpacity>
@@ -73,7 +80,7 @@ export default function Signin({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
     paddingHorizontal: 10,
     alignContent: "center",
     paddingBottom: 20,
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     fontWeight: "bold",
     marginTop: 20,
+    color: colors.text,
   },
   inputcon: {
     margin: 10,
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: "#b8aaa7",
+    borderColor: colors.secondary,
   },
   input: {
     fontSize: 16,
@@ -102,9 +110,10 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingVertical: 30,
     fontWeight: "bold",
+    color: colors.text,
   },
   button: {
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     borderRadius: 50,
     padding: 10,
   },

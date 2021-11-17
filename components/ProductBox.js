@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/core";
+import colors from "../utilities/colors";
 
 export default function ProductBox({ product }) {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: "#b8aaa7",
+    borderColor: colors.secondary,
     width: "45%",
     paddingVertical: 10,
   },
@@ -50,6 +51,6 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 19,
-    color: "#8c736d",
+    color: colors.primary,
   },
 });

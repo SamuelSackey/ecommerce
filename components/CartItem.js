@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../redux";
+import colors from "../utilities/colors";
 
-export default function CartItem() {
+export default function CartItem({ product }) {
+  const { title, image, price } = product;
+
+  const dispatch = useDispatch();
+
+  const { removeItemFromCart, increaseCartPrice, decreaseCartPrice } =
+    bindActionCreators(actionCreators, dispatch);
+
+  useEffect(() => {
+    const unsubscribe = increaseCartPrice(price);
+    return unsubscribe;
+  }, []);
+
+  const [counterNumber, setCounterNumber] = useState(1);
+
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+          uri: image,
         }}
         style={styles.image}
       />
@@ -17,8 +35,10 @@ export default function CartItem() {
       <View style={styles.rightContainer}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View style={{ flex: 2 }}>
-            <Text style={styles.name}>
-              Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+            <Text style={styles.name}>{title}</Text>
+            <Text style={styles.price}>
+              {"$"}
+              {price * counterNumber}
             </Text>
           </View>
 
@@ -29,16 +49,50 @@ export default function CartItem() {
             }}
           >
             <View style={{ alignItems: "center", paddingHorizontal: 5 }}>
-              <TouchableOpacity>
-                <Ionicons name="ios-chevron-up" size={24} color="black" />
+              <TouchableOpacity
+                onPress={() => {
+                  setCounterNumber(counterNumber + 1);
+                  increaseCartPrice(price);
+                }}
+              >
+                <Ionicons
+                  name="ios-chevron-up"
+                  size={24}
+                  color={colors.icons}
+                />
               </TouchableOpacity>
-              <Text>3</Text>
-              <TouchableOpacity>
-                <Ionicons name="ios-chevron-down" size={24} color="black" />
-              </TouchableOpacity>
+              <Text>{counterNumber}</Text>
+              {counterNumber === 1 ? (
+                <View>
+                  <Ionicons
+                    name="ios-chevron-down"
+                    size={24}
+                    color="lightgrey"
+                  />
+                </View>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => {
+                    setCounterNumber(counterNumber - 1);
+                    decreaseCartPrice(price);
+                  }}
+                >
+                  <Ionicons
+                    name="ios-chevron-down"
+                    size={24}
+                    color={colors.icons}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
-            <TouchableOpacity style={{ paddingLeft: 5 }}>
-              <AntDesign name="delete" size={24} color="black" />
+            <TouchableOpacity
+              style={{ paddingLeft: 5 }}
+              onPress={() => {
+                removeItemFromCart(product);
+                decreaseCartPrice(price * counterNumber);
+              }}
+            >
+              <AntDesign name="delete" size={24} color={colors.icons} />
             </TouchableOpacity>
           </View>
         </View>
@@ -59,7 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: "#8c736d",
+    borderColor: colors.secondary,
   },
 
   rightContainer: {
@@ -70,6 +124,13 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 14,
     marginBottom: 2,
+    color: colors.text,
+  },
+  price: {
+    fontSize: 16,
+    marginVertical: 2,
+    textAlign: "right",
+    color: colors.primary,
   },
   text: {
     color: "grey",

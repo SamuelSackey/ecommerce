@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ProductBox from "../components/ProductBox";
 import Categories from "../assets/data/Categories";
@@ -7,6 +14,7 @@ import Category from "../assets/data/Category";
 import Products from "../assets/data/Products";
 import CategoriesBar from "../components/CategoriesBar";
 import TopBar from "../components/TopBar";
+import colors from "../utilities/colors";
 
 export default function Home() {
   const [loadedCat, setLoadedCat] = useState("All");
@@ -23,8 +31,15 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.page}>
       <TopBar />
-      <View>
-        <Text style={styles.bigtext}>Discover our exclusive products</Text>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "baseline",
+        }}
+      >
+        <Image source={require("../assets/ShopIcon.png")} style={styles.icon} />
+        <Text style={styles.bigtext}>Electro-Shopper</Text>
       </View>
 
       <View style={{ paddingBottom: 10 }}>
@@ -52,6 +67,7 @@ export default function Home() {
           numColumns={2}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ alignItems: "center" }}
+          columnWrapperStyle={{ justifyContent: "center" }}
         />
       </View>
     </SafeAreaView>
@@ -62,11 +78,17 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
   },
-
+  icon: {
+    width: 50,
+    height: 50,
+    borderRadius: 20,
+  },
   bigtext: {
     fontSize: 30,
     marginBottom: 20,
+    color: colors.text,
+    paddingLeft: 10,
   },
 });
