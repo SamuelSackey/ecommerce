@@ -110,21 +110,18 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#8c736d",
-    borderRadius: 50,
+    borderRadius: 10,
     padding: 15,
-    flexDirection: "row",
     alignItems: "center",
   },
   buttoninactive: {
     backgroundColor: "grey",
-    borderRadius: 50,
+    borderRadius: 10,
     padding: 15,
-    flexDirection: "row",
     alignItems: "center",
   },
   buttoncon: {
     paddingVertical: 10,
-    flexDirection: "row",
     justifyContent: "center",
     paddingHorizontal: 20,
   },

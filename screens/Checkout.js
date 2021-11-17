@@ -29,10 +29,10 @@ export default function Checkout({ navigation }) {
         <Text style={styles.bartext}>Checkout</Text>
       </View>
 
-      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }}>
         <View style={styles.card}>
           <View style={{ paddingTop: 5 }}>
-            <Text style={styles.textbig}>Information</Text>
+            <Text style={styles.cardtext}>Information</Text>
             <View style={styles.inputcon}>
               <TextInput style={styles.input} placeholder="Name" />
             </View>
@@ -47,7 +47,7 @@ export default function Checkout({ navigation }) {
 
         <View style={styles.card}>
           <View style={{ paddingTop: 5 }}>
-            <Text style={styles.textbig}>Payment</Text>
+            <Text style={styles.cardtext}>Payment</Text>
 
             <TouchableOpacity
               onPress={() =>
@@ -73,7 +73,7 @@ export default function Checkout({ navigation }) {
                     ? "radio-button-on"
                     : "radio-button-off"
                 }
-                color="#b8aaa7"
+                color="#8c736d"
                 size={18}
               />
             </TouchableOpacity>
@@ -100,7 +100,7 @@ export default function Checkout({ navigation }) {
                 name={
                   paymentMethod.PayPal ? "radio-button-on" : "radio-button-off"
                 }
-                color="#b8aaa7"
+                color="#8c736d"
                 size={18}
               />
             </TouchableOpacity>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginVertical: 5,
   },
-  textbig: {
+  cardtext: {
     fontSize: 30,
     paddingHorizontal: 10,
     paddingVertical: 5,
@@ -189,21 +189,18 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#8c736d",
-    borderRadius: 50,
+    borderRadius: 10,
     padding: 15,
-    flexDirection: "row",
     alignItems: "center",
   },
   buttoninactive: {
     backgroundColor: "grey",
-    borderRadius: 50,
+    borderRadius: 10,
     padding: 15,
-    flexDirection: "row",
     alignItems: "center",
   },
   buttoncon: {
     paddingVertical: 10,
-    flexDirection: "row",
     justifyContent: "center",
     paddingHorizontal: 20,
   },

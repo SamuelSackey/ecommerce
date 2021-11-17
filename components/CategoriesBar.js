@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     paddingHorizontal: 15,
-    backgroundColor: "#b8aaa7",
+    backgroundColor: "#8c736d",
     marginHorizontal: 4,
-    borderRadius: 70,
+    borderRadius: 10,
   },
 });

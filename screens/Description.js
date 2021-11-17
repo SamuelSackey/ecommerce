@@ -59,9 +59,8 @@ export default function Description() {
             style={styles.button}
             onPress={() => addItemToCart([product])}
           >
-            <FontAwesome name="opencart" size={24} color="white" />
             <Text style={{ color: "white", paddingLeft: 5, fontSize: 16 }}>
-              {"$"}
+              {"Add to Cart ~ $"}
               {price}
             </Text>
           </TouchableOpacity>
@@ -115,21 +114,18 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#8c736d",
-    borderRadius: 50,
+    borderRadius: 10,
     padding: 15,
-    flexDirection: "row",
     alignItems: "center",
   },
   buttoninactive: {
     backgroundColor: "grey",
-    borderRadius: 50,
+    borderRadius: 10,
     padding: 15,
-    flexDirection: "row",
     alignItems: "center",
   },
   buttoncon: {
     paddingVertical: 10,
-    flexDirection: "row",
     justifyContent: "center",
     paddingHorizontal: 20,
   },
