@@ -15,6 +15,7 @@ import TopBar from "../components/TopBar";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../redux";
+import colors from "../utilities/colors";
 
 export default function Description() {
   const route = useRoute();
@@ -74,14 +75,7 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#fcfcfc",
-  },
-  topbar: {
-    paddingTop: 40,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 10,
+    backgroundColor: colors.background,
   },
   imgbox: {
     paddingHorizontal: 50,
@@ -97,6 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     padding: 2,
     textAlign: "center",
+    color: colors.text,
   },
   proddescr: {
     fontSize: 16,
@@ -113,7 +108,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     borderRadius: 10,
     padding: 15,
     alignItems: "center",

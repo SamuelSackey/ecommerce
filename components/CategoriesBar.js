@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import colors from "../utilities/colors";
 
 const CategoriesBar = ({ categories }) => {
   const { category } = categories;
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     paddingHorizontal: 15,
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     marginHorizontal: 4,
     borderRadius: 10,
   },

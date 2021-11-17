@@ -7,6 +7,7 @@ import Category from "../assets/data/Category";
 import Products from "../assets/data/Products";
 import CategoriesBar from "../components/CategoriesBar";
 import TopBar from "../components/TopBar";
+import colors from "../utilities/colors";
 
 export default function Home() {
   const [loadedCat, setLoadedCat] = useState("All");
@@ -62,11 +63,12 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
   },
 
   bigtext: {
     fontSize: 30,
     marginBottom: 20,
+    color: colors.text,
   },
 });

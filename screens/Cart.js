@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionCreators } from "../redux";
 import { bindActionCreators } from "redux";
 import round from "../utilities/round";
+import colors from "../utilities/colors";
 
 export default function Cart({ navigation }) {
   const dispatch = useDispatch();
@@ -36,7 +37,11 @@ export default function Cart({ navigation }) {
     <SafeAreaView style={styles.page}>
       <View style={styles.topbar}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back-circle-outline" size={26} color="black" />
+          <Ionicons
+            name="arrow-back-circle-outline"
+            size={26}
+            color={colors.icons}
+          />
         </TouchableOpacity>
         <Text style={styles.bartext}>Cart</Text>
         <TouchableOpacity
@@ -45,7 +50,7 @@ export default function Cart({ navigation }) {
             resetCartPrice();
           }}
         >
-          <MaterialIcons name="clear-all" size={26} color="black" />
+          <MaterialIcons name="clear-all" size={26} color={colors.icons} />
         </TouchableOpacity>
       </View>
 
@@ -59,8 +64,8 @@ export default function Cart({ navigation }) {
       </View>
 
       <View style={styles.pricecon}>
-        <Text style={{ fontSize: 16 }}>Total Price</Text>
-        <Text style={{ fontSize: 18, color: "#8c736d" }}>
+        <Text style={{ fontSize: 16, color: colors.text }}>Total </Text>
+        <Text style={{ fontSize: 18, color: colors.primary }}>
           {"$"}
           {round(totalPrice, 2)}
         </Text>
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
   },
   topbar: {
     paddingTop: 40,
@@ -107,9 +112,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 1,
     textAlign: "left",
+    color: colors.text,
   },
   button: {
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     borderRadius: 10,
     padding: 15,
     alignItems: "center",

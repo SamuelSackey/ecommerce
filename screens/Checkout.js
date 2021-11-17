@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import { useSelector } from "react-redux";
+import colors from "../utilities/colors";
 import round from "../utilities/round";
 
 export default function Checkout({ navigation }) {
@@ -24,7 +25,11 @@ export default function Checkout({ navigation }) {
     <SafeAreaView style={styles.page}>
       <View style={styles.topbar}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back-circle-outline" size={26} color="black" />
+          <Ionicons
+            name="arrow-back-circle-outline"
+            size={26}
+            color={colors.icons}
+          />
         </TouchableOpacity>
         <Text style={styles.bartext}>Checkout</Text>
       </View>
@@ -62,10 +67,12 @@ export default function Checkout({ navigation }) {
                 <AntDesign
                   name="creditcard"
                   size={24}
-                  color="black"
+                  color={colors.icons}
                   style={{ paddingRight: 5 }}
                 />
-                <Text style={{ fontSize: 16 }}>Credit Card</Text>
+                <Text style={{ fontSize: 16, color: colors.text }}>
+                  Credit Card
+                </Text>
               </View>
               <Ionicons
                 name={
@@ -73,7 +80,7 @@ export default function Checkout({ navigation }) {
                     ? "radio-button-on"
                     : "radio-button-off"
                 }
-                color="#8c736d"
+                color={colors.icons}
                 size={18}
               />
             </TouchableOpacity>
@@ -91,16 +98,16 @@ export default function Checkout({ navigation }) {
                 <Entypo
                   name="paypal"
                   size={24}
-                  color="black"
+                  color={colors.icons}
                   style={{ paddingRight: 5 }}
                 />
-                <Text style={{ fontSize: 16 }}>PayPal</Text>
+                <Text style={{ fontSize: 16, color: colors.text }}>PayPal</Text>
               </View>
               <Ionicons
                 name={
                   paymentMethod.PayPal ? "radio-button-on" : "radio-button-off"
                 }
-                color="#8c736d"
+                color={colors.icons}
                 size={18}
               />
             </TouchableOpacity>
@@ -109,8 +116,8 @@ export default function Checkout({ navigation }) {
       </ScrollView>
 
       <View style={styles.pricecon}>
-        <Text style={{ fontSize: 16 }}>Total Price</Text>
-        <Text style={{ fontSize: 18, color: "#8c736d" }}>
+        <Text style={{ fontSize: 16, color: colors.text }}>Total </Text>
+        <Text style={{ fontSize: 18, color: colors.primary }}>
           {"$"}
           {round(totalPrice, 2)}
         </Text>
@@ -134,7 +141,7 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
   },
   topbar: {
     paddingTop: 40,
@@ -149,6 +156,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "left",
     marginLeft: 10,
+    color: colors.text,
   },
   card: {
     backgroundColor: "white",
@@ -163,6 +171,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     fontWeight: "bold",
+    color: colors.text,
   },
   inputcon: {
     margin: 10,
@@ -170,7 +179,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: "#b8aaa7",
+    borderColor: colors.secondary,
   },
   input: {
     fontSize: 16,
@@ -185,16 +194,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#b8aaa7",
+    borderColor: colors.secondary,
   },
   button: {
-    backgroundColor: "#8c736d",
-    borderRadius: 10,
-    padding: 15,
-    alignItems: "center",
-  },
-  buttoninactive: {
-    backgroundColor: "grey",
+    backgroundColor: colors.primary,
     borderRadius: 10,
     padding: 15,
     alignItems: "center",

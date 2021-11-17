@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import { useSelector } from "react-redux";
+import colors from "../utilities/colors";
 
 export default function TopBar({ route }) {
   const navigation = useNavigation();
@@ -13,11 +14,15 @@ export default function TopBar({ route }) {
     <View style={styles.topbar}>
       {route ? (
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back-circle-outline" size={27} color="black" />
+          <Ionicons
+            name="arrow-back-circle-outline"
+            size={27}
+            color={colors.icons}
+          />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={() => navigation.navigate("Menu")}>
-          <Feather name="menu" size={25} color="black" />
+          <Feather name="menu" size={25} color={colors.icons} />
         </TouchableOpacity>
       )}
 
@@ -25,7 +30,7 @@ export default function TopBar({ route }) {
         onPress={() => navigation.navigate("Cart")}
         style={{ flexDirection: "row" }}
       >
-        <FontAwesome name="opencart" size={24} color="black" />
+        <FontAwesome name="opencart" size={24} color={colors.icons} />
         {numberOfProducts ? (
           <View style={styles.badgeContainer}>
             <Text style={styles.badgeText}>{numberOfProducts}</Text>
@@ -45,7 +50,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   badgeContainer: {
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     width: 20,
     height: 20,
     borderRadius: 10,

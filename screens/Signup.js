@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { Entypo } from "@expo/vector-icons";
+import colors from "../utilities/colors";
 
 export default function Signup({ navigation }) {
   return (
@@ -50,7 +51,11 @@ export default function Signup({ navigation }) {
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
             <Text
-              style={{ color: "#8c736d", fontSize: 16, fontWeight: "bold" }}
+              style={{
+                color: colors.primary,
+                fontSize: 16,
+                fontWeight: "bold",
+              }}
             >
               Sign in
             </Text>
@@ -65,7 +70,7 @@ export default function Signup({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
     paddingHorizontal: 10,
     alignContent: "center",
     paddingBottom: 20,
@@ -75,6 +80,7 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingVertical: 30,
     fontWeight: "bold",
+    color: colors.text,
   },
   inputcon: {
     margin: 10,
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: "#b8aaa7",
+    borderColor: colors.primary,
   },
   input: {
     fontSize: 16,
@@ -93,9 +99,10 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingVertical: 30,
     fontWeight: "bold",
+    color: colors.text,
   },
   button: {
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     borderRadius: 50,
     padding: 10,
   },

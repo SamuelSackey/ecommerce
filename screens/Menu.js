@@ -7,13 +7,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import colors from "../utilities/colors";
 
 export default function Menu({ navigation }) {
   return (
     <SafeAreaView style={styles.page}>
       <View style={styles.topbar}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back-circle-outline" size={26} color="black" />
+          <Ionicons
+            name="arrow-back-circle-outline"
+            size={26}
+            color={colors.icons}
+          />
         </TouchableOpacity>
         <Text style={styles.bartext}>Menu</Text>
       </View>
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingHorizontal: 10,
-    backgroundColor: "#fcfcfc",
+    backgroundColor: colors.background,
   },
   topbar: {
     paddingTop: 40,
@@ -53,9 +58,10 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "left",
     marginLeft: 10,
+    color: colors.text,
   },
   button: {
-    backgroundColor: "#8c736d",
+    backgroundColor: colors.primary,
     borderRadius: 10,
     padding: 15,
     alignItems: "center",

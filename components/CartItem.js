@@ -5,6 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../redux";
+import colors from "../utilities/colors";
 
 export default function CartItem({ product }) {
   const { title, image, price } = product;
@@ -54,7 +55,11 @@ export default function CartItem({ product }) {
                   increaseCartPrice(price);
                 }}
               >
-                <Ionicons name="ios-chevron-up" size={24} color="black" />
+                <Ionicons
+                  name="ios-chevron-up"
+                  size={24}
+                  color={colors.icons}
+                />
               </TouchableOpacity>
               <Text>{counterNumber}</Text>
               {counterNumber === 1 ? (
@@ -72,7 +77,11 @@ export default function CartItem({ product }) {
                     decreaseCartPrice(price);
                   }}
                 >
-                  <Ionicons name="ios-chevron-down" size={24} color="black" />
+                  <Ionicons
+                    name="ios-chevron-down"
+                    size={24}
+                    color={colors.icons}
+                  />
                 </TouchableOpacity>
               )}
             </View>
@@ -83,7 +92,7 @@ export default function CartItem({ product }) {
                 decreaseCartPrice(price * counterNumber);
               }}
             >
-              <AntDesign name="delete" size={24} color="black" />
+              <AntDesign name="delete" size={24} color={colors.icons} />
             </TouchableOpacity>
           </View>
         </View>
@@ -104,7 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginRight: 10,
     borderWidth: 1,
-    borderColor: "#8c736d",
+    borderColor: colors.secondary,
   },
 
   rightContainer: {
@@ -115,12 +124,13 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 14,
     marginBottom: 2,
+    color: colors.text,
   },
   price: {
     fontSize: 16,
     marginVertical: 2,
     textAlign: "right",
-    color: "#8c736d",
+    color: colors.primary,
   },
   text: {
     color: "grey",
