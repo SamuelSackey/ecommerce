@@ -10,6 +10,7 @@ import Cart from "./screens/Cart";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Checkout from "./screens/Checkout";
+import Menu from "./screens/Menu";
 
 export default function App() {
   const MainNavigator = createStackNavigator();
@@ -25,6 +26,7 @@ export default function App() {
             <MainNavigator.Screen name="Signin" component={Signin} />
             <MainNavigator.Screen name="Signup" component={Signup} />
             <MainNavigator.Screen name="Home" component={Home} />
+            <MainNavigator.Screen name="Menu" component={Menu} />
             <MainNavigator.Screen name="Description" component={Description} />
             <MainNavigator.Screen name="Cart" component={Cart} />
             <MainNavigator.Screen name="Checkout" component={Checkout} />

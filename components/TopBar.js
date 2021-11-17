@@ -16,8 +16,8 @@ export default function TopBar({ route }) {
           <Ionicons name="arrow-back-circle-outline" size={27} color="black" />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity>
-          <Feather name="settings" size={25} color="black" />
+        <TouchableOpacity onPress={() => navigation.navigate("Menu")}>
+          <Feather name="menu" size={25} color="black" />
         </TouchableOpacity>
       )}
 
